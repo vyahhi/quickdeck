@@ -31,8 +31,6 @@
   "permissions": [
     "<all_urls>",
     "notifications",
-    "storage",
-    "https://kgsearch.googleapis.com/*"
-  ],
-  "content_security_policy": "script-src 'self' kgsearch.googleapis.com"
+    "storage"
+  ]
 }
