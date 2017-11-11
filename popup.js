@@ -5,6 +5,7 @@ function toggleHighlight(e) {
 function deleteWords(e) {
     chrome.storage.local.remove(['words'], function () {});
     document.querySelector('#savedWords').style.display = 'none';
+    document.querySelector('#emptyWords').style.display = 'block';
     document.querySelector('#words').innerHTML = '';
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
         var activeTab = tabs[0];
@@ -29,7 +30,8 @@ document.addEventListener('DOMContentLoaded', function () {
             words_list.appendChild(li);
         }
         if (result.words.length > 0) {
-            document.querySelector('#savedWords').style.display = 'inline-block';
+            document.querySelector('#savedWords').style.display = 'block';
+            document.querySelector('#emptyWords').style.display = 'none';
         }
     });
 

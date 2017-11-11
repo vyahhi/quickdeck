@@ -9,7 +9,6 @@ document.addEventListener('mouseup', function (event) {
         var range = window.getSelection().getRangeAt(0);
         var selectionContents = range.extractContents();
         var span = document.createElement('span');
-        span.style.background = 'yellow';
         span.className = 'highlightedWord';
         span.appendChild(selectionContents);
         range.insertNode(span);
@@ -34,9 +33,9 @@ document.addEventListener('mouseup', function (event) {
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (request.mode == 'deleteWords') {
+        // un-highlight with yellow
         document.querySelectorAll('.highlightedWord').forEach((element, index, array) => {
             element.className = '';
-            element.style.background = '';
         });
     }
 });
