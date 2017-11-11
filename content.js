@@ -46,23 +46,26 @@ function getUrlVars(href) {
 
 // Google searches
 if (window.location.origin.indexOf('google') != -1) {
-    var url = window.location.toString();
-    var v = getUrlVars(url);
-    var q = decodeURIComponent(v.q.replace(/\+/g, '%20'));
-    // save to localstorage
-    chrome.storage.local.get('searches', function (result) {
-            // append to the list of words
-            if (result.searches) {
-                result.searches.push(q);
-            }
-            else {
-                result.searches = [q];
-            }
-            chrome.storage.local.set({'searches': result.searches});
+    chrome.storage.local.get('highlight', function (result) {
+        if (!result.highlight) return; // not in highlight mode
+        var url = window.location.toString();
+        var v = getUrlVars(url);
+        var q = decodeURIComponent(v.q.replace(/\+/g, '%20'));
+        // save to localstorage
+        chrome.storage.local.get('searches', function (result) {
+                // append to the list of words
+                if (result.searches) {
+                    result.searches.push(q);
+                }
+                else {
+                    result.searches = [q];
+                }
+                chrome.storage.local.set({'searches': result.searches});
 
-            // send browser notification throught background.js
-            chrome.runtime.sendMessage({mode: 'sendNotification', message: q});
-        });
+                // send browser notification throught background.js
+                chrome.runtime.sendMessage({mode: 'sendNotification', message: q});
+            });
+    }
 }
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
