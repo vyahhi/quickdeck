@@ -26,8 +26,6 @@
     "default_popup": "popup.html"
   },
   "permissions": [
-    "<all_urls>",
-    "notifications",
-    "storage"
-  ]
+    "contextMenus"
+  ],
 }
