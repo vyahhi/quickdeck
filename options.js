@@ -1,10 +1,10 @@
 function knowledgeGraph() {
-  var service_url = 'https://kgsearch.googleapis.com/v1/entities:search?query=taylor+swift&key=AIzaSyDTlx83dTXILreFQl8nkQfkvcvE3YI6rxc&limit=1&indent=True';
+  var service_url = 'https://kgsearch.googleapis.com/v1/entities:search';
   var params = {
     'query': 'Taylor Swift',
     'limit': 10,
     'indent': true,
-    'key' : 'AIzaSyDTlx83dTXILreFQl8nkQfkvcvE3YI6rxc',
+    'key' : 'AIzaSyBzBhi_ssjCPq642p_0JgleROkgtPVTv5E',
   };
 
   $.getJSON(service_url + '?callback=?', params, function(response) {
