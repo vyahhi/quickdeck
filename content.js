@@ -10,6 +10,7 @@ document.addEventListener('mouseup', function (event) {
         var selectionContents = range.extractContents();
         var span = document.createElement('span');
         span.style.background = 'yellow';
+        span.className = 'highlightedWord';
         span.appendChild(selectionContents);
         range.insertNode(span);
 
@@ -25,8 +26,17 @@ document.addEventListener('mouseup', function (event) {
             chrome.storage.local.set({'words': result.words});
 
             // send browser notification throught background.js
-            chrome.runtime.sendMessage({message: sel}, function () {
-            });
+            chrome.runtime.sendMessage({mode: 'sendNotification', message: sel});
         });
     });
 })
+
+
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+    if (request.mode == 'deleteWords') {
+        document.querySelectorAll('.highlightedWord').forEach((element, index, array) => {
+            element.className = '';
+            element.style.background = '';
+        });
+    }
+});

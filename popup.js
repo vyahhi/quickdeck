@@ -6,6 +6,10 @@ function deleteWords(e) {
     chrome.storage.local.remove(['words'], function () {});
     document.querySelector('#savedWords').style.display = 'none';
     document.querySelector('#words').innerHTML = '';
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        var activeTab = tabs[0];
+        chrome.tabs.sendMessage(activeTab.id, {mode: 'deleteWords'});
+    });
 }
 
 document.addEventListener('DOMContentLoaded', function () {
