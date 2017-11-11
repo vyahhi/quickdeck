@@ -1,17 +1,33 @@
 {
   "name": "QuickDeck",
-  "description" : "Personal flash cards in your browser!",
+  "description": "Personal flash cards in your browser!",
   "version": "0.0.1",
   "manifest_version": 2,
-  "icons": { "300": "images/icon.png" },
-  "background": {
-    "scripts": ["background.js"]
+  "icons": {
+    "300": "images/icon.png"
   },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ],
   "browser_action": {
     "default_title": "QuickDeck",
     "default_popup": "popup.html"
   },
   "permissions": [
-    "contextMenus"
+    "<all_urls>",
+    "notifications",
+    "storage"
   ]
 }
