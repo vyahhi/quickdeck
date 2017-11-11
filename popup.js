@@ -4,6 +4,7 @@ function toggleHighlight(e) {
 
 function deleteWords(e) {
     chrome.storage.local.remove(['words'], function () {});
+    chrome.storage.local.remove(['searches'], function () {});
     document.querySelector('#savedWords').style.display = 'none';
     document.querySelector('#emptyWords').style.display = 'block';
     document.querySelector('#words').innerHTML = '';
@@ -14,6 +15,7 @@ function deleteWords(e) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+    
     // Toggle Checkbox
     chrome.storage.local.get('highlight', function (result) {
         document.querySelector('#toggleHighlight').checked = result.highlight
@@ -30,6 +32,20 @@ document.addEventListener('DOMContentLoaded', function () {
             words_list.appendChild(li);
         }
         if (result.words.length > 0) {
+            document.querySelector('#savedWords').style.display = 'block';
+            document.querySelector('#emptyWords').style.display = 'none';
+        }
+    });
+
+    // List of Searches (copy-pasta detected!)
+    chrome.storage.local.get('searches', function (result) {
+        var words_list = document.querySelector('#searches');
+        for (var i = 0; i < result.searches.length; i++) {
+            var li = document.createElement('li');
+            li.appendChild(document.createTextNode(result.searches[i]));
+            words_list.appendChild(li);
+        }
+        if (result.searches.length > 0) {
             document.querySelector('#savedWords').style.display = 'block';
             document.querySelector('#emptyWords').style.display = 'none';
         }
