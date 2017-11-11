@@ -65,7 +65,7 @@ if (window.location.origin.indexOf('google') != -1) {
                 // send browser notification throught background.js
                 chrome.runtime.sendMessage({mode: 'sendNotification', message: q});
             });
-    }
+    });
 }
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
