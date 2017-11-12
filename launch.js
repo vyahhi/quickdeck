@@ -81,31 +81,34 @@ function knowledgeGraph(word, div1, div2, div3) {
 
   // ==========================================
   // Query for Wolfram Alpha
-  return; // TODO: how to visualize these pods?
-  var service_url = 'http://api.wolframalpha.com/v2/query';
-  var params = {
-    'appid': 'AH23YY-UE55VV3TLY',
-    'input': word,
-    'output': 'json'
-  };
-  $.getJSON(service_url, params, function(response) {
-  	console.log(response);
-  	var message = '';
-  	if (!response.queryresult.pods.length) {
-	  	message += '<center><h3>' + word + ' (by Wolfram Alpha)</h3></center>';
-  		message += 'Not found <tt>¯\\_(ツ)_/¯</tt>';
-  	}
-  	else {
-  		var value = response.queryresult.pods[0];
-		var name = value.definitions.word;
-	  	message += '<center><h3>' + name + ' (by Wolfram Alpha)</h3></center>';
-		var description = value.definitions.desc;
-        message += '<b>Description:</b> ' + description + '<br><br>';
-	}
-	console.log(message);
-  	$('<div>' + message + '</div>').appendTo(div3);
-  });
-
+  // var service_url = 'http://api.wolframalpha.com/v2/query';
+  // var params = {
+  //   'appid': 'AH23YY-UE55VV3TLY',
+  //   'input': word,
+  //   'output': 'json'
+  // };
+  // $.getJSON(service_url, params, function(response) {
+  // 	console.log(response);
+  // 	var message = '';
+  // 	if (!response.queryresult.pods.length) {
+	 //  	message += '<center><h3>' + word + ' (by Wolfram Alpha)</h3></center>';
+  // 		message += 'Not found <tt>¯\\_(ツ)_/¯</tt>';
+  // 	}
+  // 	else {
+  // 		var value = response.queryresult.pods[0];
+	 //  	var name = value.definitions.word;
+	 //  	message += '<center><h3>' + name + ' (by Wolfram Alpha)</h3></center>';
+		//   var description = value.definitions.desc;
+  //     message += '<b>Description:</b> ' + description + '<br><br>';
+	 //  }
+	 //  console.log(message);
+  // 	$('<div>' + message + '</div>').appendTo(div3);
+  // });
+  var message = '';
+  message += '<center><h3>' + word + ' (by Wolfram Alpha)</h3></center>';
+  message += 'Search: <a href="https://www.wolframalpha.com/input/?i=' + word + '">' + word + '</a>';
+  //  message += '<iframe src="https://www.wolframalpha.com/input/?i=' + word + '"></iframe>';
+  $('<div>' + message + '</div>').appendTo(div3);
 
 }
 
