@@ -18,9 +18,9 @@ function knowledgeGraph(word, div) {
 		var description = response.itemListElement[0]['result']['description'];
 	  	message += '<b>Description:</b> ' + description + '<br><br>';
 	  	if (response.itemListElement[0]['result']['detailedDescription']) {
-	  		var detailedDescription = response.itemListElement[0]['result']['detailedDescription']['articleBody']; 
+	  		var detailedDescription = response.itemListElement[0]['result']['detailedDescription']['articleBody'];
 	  		message += '<b>Detailed description:</b> ' + detailedDescription + '<br><br>';
-	  		var detailedDescriptionUrl = response.itemListElement[0]['result']['detailedDescription']['url']; 
+	  		var detailedDescriptionUrl = response.itemListElement[0]['result']['detailedDescription']['url'];
 	  		message += '<b>See more:</b> <a href="' + detailedDescriptionUrl + '">' + detailedDescriptionUrl + '</a><br><br>';
   		}
 		var url = response.itemListElement[0]['result']['url'];
@@ -61,3 +61,13 @@ chrome.storage.local.get('searches', function (result) {
 		showCard(word);
     }
 });
+
+
+function WolframSearch(word, div) {
+  var service_url = 'http://api.wolframalpha.com/v2/query?';
+  var params = {
+    'appid': 'AH23YY-UE55VV3TLY',
+    'input': word,
+    'output': 'json'
+  };
+}

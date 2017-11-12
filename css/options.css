@@ -1,24 +1,24 @@
-body {
+.navigation {
+  background-color: #FFF;
+  overflow: hidden;
+  border-bottom: 2px solid #ecf0f1;
+}
+
+ul {
+  list-style-type: none;
+}
+
+nav {
 
 }
 
-.nav {
-  height: 60px;
-  width: 100%;
-
-}
-
-#logo {
-  display: block;
-  text-align: left;
-  font-family: 'Open Sans Condensed', sans-serif;
+#brand {
   float: left;
 }
 
-#all {
-  display: block;
-  text-align: right;
+#items {
   float: right;
+  margin-right: 2%;
 }
 
 button {
