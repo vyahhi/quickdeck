@@ -18,7 +18,12 @@ document.addEventListener('mouseup', function (event) {
         chrome.storage.local.get('words', function (result) {
             // append to the list of words
             if (result.words) {
-                result.words.push(sel);
+                if (result.words.indexOf(sel) == -1) {
+                    result.words.push(sel);
+                }
+                else {
+                    sel = "Actually not, because it was already saved before";
+                }
             }
             else {
                 result.words = [sel];
@@ -53,18 +58,23 @@ if (window.location.origin.indexOf('google') != -1) {
         var q = decodeURIComponent(v.q.replace(/\+/g, '%20'));
         // save to localstorage
         chrome.storage.local.get('searches', function (result) {
-                // append to the list of words
-                if (result.searches) {
+            // append to the list of words
+            if (result.searches) {
+                if (result.searches.indexOf(q) == -1) {
                     result.searches.push(q);
                 }
                 else {
-                    result.searches = [q];
+                    q = "Actually not, because it was already saved before";
                 }
-                chrome.storage.local.set({'searches': result.searches});
+            }
+            else {
+                result.searches = [q];
+            }
+            chrome.storage.local.set({'searches': result.searches});
 
-                // send browser notification throught background.js
-                chrome.runtime.sendMessage({mode: 'sendNotification', message: q});
-            });
+            // send browser notification throught background.js
+            chrome.runtime.sendMessage({mode: 'sendNotification', message: q});
+        });
     });
 }
 
