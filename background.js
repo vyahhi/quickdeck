@@ -3,7 +3,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     // Send a simple text notification from content.js
     var options = {
         type: "basic",
-        title: "Saved to QuickDeck",
+        title: "Saved to QuiqDex",
         message: request.message,
         iconUrl: "images/icon.png"
     };

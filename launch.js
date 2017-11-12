@@ -14,13 +14,13 @@ function knowledgeGraph(word, div1, div2, div3) {
   	console.log(response);
   	var message = '';
   	if (response.itemListElement.length == 0) {
-  		message += '<center><h3>' + word + ' (by Google)</h3></center>';
+  		message += '<center><h3>' + word + '</h3><small>(from Google Knowledge Graph)</small><br><br></center>';
   		message += 'Not found <tt>¯\\_(ツ)_/¯</tt>';
   	}
   	else {
   		var value = response.itemListElement[0]['result'];
 		var name = value['name'];
-  		message += '<center><h3>' + name + ' (by Google)</h3></center>';
+  		message += '<center><h3>' + name + '</h3><small>(from Google Knowledge Graph)</small><br><br></center>';
 		var description = value['description'];
 		if (description) {
 		 message += '<b>Description:</b> ' + description + '<br><br>';
@@ -56,14 +56,14 @@ function knowledgeGraph(word, div1, div2, div3) {
   	console.log(response);
   	var message = '';
   	if (response['entities']['-1']) {
-	  	message += '<center><h3>' + word + ' (by Wikidata)</h3></center>';
+	  	message += '<center><h3>' + word + '</h3><small>(from Wikidata)</small><br><br></center>';
   		message += 'Not found <tt>¯\\_(ツ)_/¯</tt>';
   	}
   	else {
   		var key = [Object.keys(response.entities)[0]];
   		var value = response.entities[key];
 		var name = value['labels']['en']['value'];
-	  	message += '<center><h3>' + name + ' (by Wikidata)</h3></center>';
+	  	message += '<center><h3>' + name + '</h3><small>(from Wikidata)</small><br><br></center>';
 		if (value['descriptions']['en']) {
 			var description = value['descriptions']['en']['value'];
 			if (description) {
@@ -105,7 +105,7 @@ function knowledgeGraph(word, div1, div2, div3) {
   // 	$('<div>' + message + '</div>').appendTo(div3);
   // });
   var message = '';
-  message += '<center><h3>' + word + ' (by Wolfram Alpha)</h3></center>';
+  message += '<center><h3>' + word + '</h3><small>(from Wolfram Alpha)</small><br><br></center>';
   message += 'Search: <a href="https://www.wolframalpha.com/input/?i=' + word + '">' + word + '</a>';
   //  message += '<iframe src="https://www.wolframalpha.com/input/?i=' + word + '"></iframe>';
   $('<div>' + message + '</div>').appendTo(div3);

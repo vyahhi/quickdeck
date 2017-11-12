@@ -3,7 +3,7 @@ document.addEventListener('mouseup', function (event) {
     chrome.storage.local.get('highlight', function (result) {
         if (!result.highlight) return; // not in highlight mode
 
-        var sel = window.getSelection().toString();
+        var sel = window.getSelection().toString().trim();
         if (!sel.length) return; // empty selection
 
         // highlight with yellow on the page (based on https://stackoverflow.com/a/2139792/92396)
@@ -55,7 +55,7 @@ if (window.location.origin.indexOf('google') != -1) {
         if (!result.highlight) return; // not in highlight mode
         var url = window.location.toString();
         var v = getUrlVars(url);
-        var q = decodeURIComponent(v.q.replace(/\+/g, '%20'));
+        var q = decodeURIComponent(v.q.replace(/\+/g, '%20').trim());
         // save to localstorage
         chrome.storage.local.get('searches', function (result) {
             // append to the list of words

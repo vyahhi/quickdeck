@@ -1,4 +1,4 @@
-# QuickDeck
+# QuiqDex
 
 Personal flash cards in your browser!
 

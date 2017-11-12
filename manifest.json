@@ -1,5 +1,5 @@
 {
-  "name": "QuickDeck",
+  "name": "QuiqDex",
   "description": "Personal flash cards in your browser!",
   "version": "0.0.1",
   "manifest_version": 2,
@@ -25,7 +25,7 @@
     }
   ],
   "browser_action": {
-    "default_title": "QuickDeck",
+    "default_title": "QuiqDex",
     "default_popup": "popup.html"
   },
   "permissions": [
