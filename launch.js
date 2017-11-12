@@ -1,6 +1,6 @@
 function knowledgeGraph(word, div1, div2, div3) {
 
-  word = word.replace(/[^A-Za-z0-9\s]/g,"").replace(/\s{2,}/g, " ")
+  word = word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").replace(/\s{2,}/g, " ")
 
   // ==========================================
   // Query for Google Knowledge Graph API
