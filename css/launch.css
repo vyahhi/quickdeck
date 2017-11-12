@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#card1, #card2, #card3 {
+  margin: 1em;
+  padding: 1em;
+  border: 1px solid #00188E;
+  box-shadow: 0px 3px 3px 0px #eee;
+  background-color: #CCE4FF;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+#card1 h3, #card2 h3, #card3 h3 {
+  margin: 0;
+}
+
+ol {
+  padding: 0em;
+}
+
+ol li {
+  list-style-type: none;
+  padding: 0 1em 0 0;
+  margin: 0 0 1em 0;
+  text-align: center;
+}
+
+ol li button {
+  border: 1px solid #00188E;
+  padding: .5em;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+ol li button:hover, ol li button:focus, ol li button:active {
+  background-color: #CCE4FF;
+}
+
+h2 {
+ text-align: center;
+ font-size: 30px;
+}
